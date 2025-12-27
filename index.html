@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Al-Bayan Hadith Explorer</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&family=Scheherazade+New:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="app">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-content">
+                <div class="logo" onclick="navigateTo('home')">
+                    <span class="logo-icon">☪</span>
+                    <span class="logo-text">Al-Bayan Hadith Explorer</span>
+                </div>
+                <div class="search-container">
+                    <input type="text" id="searchInput" placeholder="Search hadiths..." class="search-input">
+                    <button onclick="searchHadiths()" class="search-btn">Search</button>
+                </div>
+                <div class="header-actions">
+                    <button onclick="toggleTheme()" class="theme-toggle" id="themeToggle">🌙</button>
+                </div>
+            </div>
+        </header>
+
+        <!-- Breadcrumb -->
+        <nav class="breadcrumb" id="breadcrumb">
+            <span onclick="navigateTo('home')" class="breadcrumb-item">Home</span>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Loading State -->
+            <div id="loading" class="loading-container">
+                <div class="spinner"></div>
+                <p>Loading hadith data...</p>
+            </div>
+
+            <!-- Error State -->
+            <div id="error" class="error-container hidden">
+                <div class="error-icon">⚠️</div>
+                <h2>Something went wrong</h2>
+                <p id="errorMessage"></p>
+                <button onclick="retryLastRequest()" class="retry-btn">Try Again</button>
+            </div>
+
+            <!-- Books Grid (Home View) -->
+            <section id="booksView" class="view hidden">
+                <div class="view-header">
+                    <h1>Hadith Collections</h1>
+                    <p>Select a hadith book to explore its chapters and hadiths</p>
+                </div>
+                <div id="booksGrid" class="books-grid"></div>
+            </section>
+
+            <!-- Chapters View -->
+            <section id="chaptersView" class="view hidden">
+                <div class="view-header">
+                    <h1 id="chaptersBookTitle">Chapters</h1>
+                    <div class="chapter-filter">
+                        <input type="text" id="chapterFilter" placeholder="Filter chapters..." oninput="filterChapters()">
+                    </div>
+                </div>
+                <div id="chaptersList" class="chapters-list"></div>
+            </section>
+
+            <!-- Hadiths View -->
+            <section id="hadithsView" class="view hidden">
+                <div class="view-header">
+                    <h1 id="hadithsTitle">Hadiths</h1>
+                    <div class="hadith-filters">
+                        <select id="gradeFilter" onchange="filterHadithsByGrade()">
+                            <option value="">All Grades</option>
+                            <option value="Sahih">Sahih (Authentic)</option>
+                            <option value="Hasan">Hasan (Good)</option>
+                            <option value="Da'if">Da'if (Weak)</option>
+                            <option value="Munkar">Munkar</option>
+                            <option value="Matrook">Matrook</option>
+                        </select>
+                    </div>
+                </div>
+                <div id="hadithsList" class="hadiths-list"></div>
+                <div id="pagination" class="pagination"></div>
+            </section>
+
+            <!-- Search Results View -->
+            <section id="searchView" class="view hidden">
+                <div class="view-header">
+                    <h1>Search Results</h1>
+                    <p id="searchResultsCount"></p>
+                </div>
+                <div id="searchResults" class="hadiths-list"></div>
+                <div id="searchPagination" class="pagination"></div>
+            </section>
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>Data provided by <a href="https://hadithapi.com" target="_blank">HadithAPI</a> | Al-Bayan Hadith Explorer</p>
+        </footer>
+    </div>
+
+    <!-- Hadith Modal -->
+    <div id="hadithModal" class="modal hidden">
+        <div class="modal-content">
+            <span class="modal-close" onclick="closeModal()">&times;</span>
+            <div id="modalBody"></div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
