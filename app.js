@@ -30,6 +30,7 @@ let filteredHadiths = [];
 // Initialize the application
 document.addEventListener('DOMContentLoaded', () => {
     initializeTheme();
+    initializeArabicFont();
     initializeBooks();
     setupEventListeners();
 });
@@ -47,6 +48,32 @@ function toggleTheme() {
     document.documentElement.setAttribute('data-theme', newTheme);
     localStorage.setItem('theme', newTheme);
     document.getElementById('themeToggle').textContent = newTheme === 'dark' ? '☀️' : '🌙';
+}
+
+// Arabic Font management
+const ARABIC_FONTS = {
+    'Amiri': "'Amiri', serif",
+    'Scheherazade New': "'Scheherazade New', serif",
+    'Cairo': "'Cairo', sans-serif",
+    'Reem Kufi Fun': "'Reem Kufi Fun', sans-serif",
+    'Lemonada': "'Lemonada', cursive",
+    'Fustat': "'Fustat', sans-serif"
+};
+
+function initializeArabicFont() {
+    const savedFont = localStorage.getItem('arabicFont') || 'Amiri';
+    document.documentElement.style.setProperty('--arabic-font', ARABIC_FONTS[savedFont]);
+    const select = document.getElementById('arabicFontSelect');
+    if (select) {
+        select.value = savedFont;
+    }
+}
+
+function changeArabicFont() {
+    const select = document.getElementById('arabicFontSelect');
+    const selectedFont = select.value;
+    document.documentElement.style.setProperty('--arabic-font', ARABIC_FONTS[selectedFont]);
+    localStorage.setItem('arabicFont', selectedFont);
 }
 
 // Event listeners
@@ -845,3 +872,4 @@ window.openModal = openModal;
 window.closeModal = closeModal;
 window.toggleTheme = toggleTheme;
 window.retryLastRequest = retryLastRequest;
+window.changeArabicFont = changeArabicFont;

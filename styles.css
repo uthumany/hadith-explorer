@@ -19,6 +19,7 @@
     --radius-md: 10px;
     --radius-lg: 16px;
     --transition: all 0.2s ease;
+    --arabic-font: 'Amiri', serif;
 }
 
 /* Dark Theme */
@@ -141,7 +142,41 @@ h1, h2, h3, h4, h5, h6 {
 
 .header-actions {
     display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+/* Font Selector */
+.font-selector {
+    display: flex;
+    align-items: center;
     gap: 0.5rem;
+}
+
+.font-selector label {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    white-space: nowrap;
+}
+
+.font-selector select {
+    padding: 0.5rem 0.75rem;
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-sm);
+    background: var(--surface);
+    color: var(--text-primary);
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.font-selector select:focus {
+    outline: none;
+    border-color: var(--primary-color);
+}
+
+.font-selector select:hover {
+    border-color: var(--primary-light);
 }
 
 .theme-toggle {
@@ -351,7 +386,7 @@ rem;
 }
 
 .book-info .arabic-title {
-    font-family: 'Amiri', 'Scheherazade New', serif;
+    font-family: var(--arabic-font);
     font-size: 1rem;
     color: var(--primary-color);
     font-weight: 600;
@@ -546,7 +581,7 @@ rem;
 }
 
 .hadith-arabic {
-    font-family: 'Amiri', 'Scheherazade New', serif;
+    font-family: var(--arabic-font);
     font-size: 1.4rem;
     line-height: 2;
     color: #000000;

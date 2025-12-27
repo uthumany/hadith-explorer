@@ -6,7 +6,7 @@
     <title>Al-Bayan Hadith Explorer</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&family=Scheherazade+New:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;500;600;700&family=Cairo:wght@200..1000&family=Fustat:wght@200..800&family=Inter:wght@300;400;500;600;700&family=Lemonada:wght@300..700&family=Reem+Kufi+Fun:wght@400..700&family=Scheherazade+New:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -23,6 +23,17 @@
                     <button onclick="searchHadiths()" class="search-btn">Search</button>
                 </div>
                 <div class="header-actions">
+                    <div class="font-selector">
+                        <label for="arabicFontSelect">Arabic Font:</label>
+                        <select id="arabicFontSelect" onchange="changeArabicFont()">
+                            <option value="Amiri">Amiri</option>
+                            <option value="Scheherazade New">Scheherazade New</option>
+                            <option value="Cairo">Cairo</option>
+                            <option value="Reem Kufi Fun">Reem Kufi Fun</option>
+                            <option value="Lemonada">Lemonada</option>
+                            <option value="Fustat">Fustat</option>
+                        </select>
+                    </div>
                     <button onclick="toggleTheme()" class="theme-toggle" id="themeToggle">🌙</button>
                 </div>
             </div>
