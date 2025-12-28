@@ -770,10 +770,48 @@ rem;
 .footer {
     background: var(--surface);
     border-top: 1px solid var(--border-color);
-    padding: 1.5rem;
+    padding: 2rem 1.5rem;
     text-align: center;
     color: var(--text-secondary);
     font-size: 0.9rem;
+}
+
+.footer p {
+    margin: 0.5rem 0;
+    line-height: 1.6;
+}
+
+.footer-copyright {
+    font-weight: 600;
+    color: var(--text-primary);
+    font-size: 1rem;
+}
+
+.footer-dedication {
+    color: var(--primary-color);
+}
+
+.footer-dedication strong {
+    color: var(--secondary-color);
+}
+
+.footer-license {
+    max-width: 700px;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    font-size: 0.85rem;
+}
+
+.footer-disclaimer {
+    font-size: 0.8rem;
+    font-style: italic;
+    color: var(--text-muted);
+}
+
+.footer-data {
+    margin-top: 1rem !important;
+    padding-top: 1rem;
+    border-top: 1px solid var(--border-color);
 }
 
 .footer a {
