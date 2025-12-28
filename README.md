@@ -4,7 +4,7 @@ A comprehensive web application to explore, read, and search authentic hadith co
 
 ## 🌐 Live Application
 
-**Access the application at:** https://njue1pjy6c2m.space.minimax.io
+**Access the application at:** [https://hadith-explorer-rose.vercel.app/]
 
 ## 📚 Supported Hadith Collections
 
